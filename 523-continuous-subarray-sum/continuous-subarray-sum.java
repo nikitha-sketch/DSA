@@ -15,7 +15,9 @@ class Solution {
             }
         }
         return false;*/
-        Map<Integer,Integer>map=new HashMap<>();
+
+
+       /* Map<Integer,Integer>map=new HashMap<>();
         map.put(0,-1);
         int sum=0;
         for(int i=0;i<nums.length;i++){
@@ -32,6 +34,19 @@ class Solution {
                 map.put(sum,i);
             }
         }
+        return false;*/
+
+        Set<Integer> modSet = new HashSet<>();
+        int currSum = 0, prevSum = 0;
+
+        for (int n : nums) {
+            currSum += n;
+            int mod = (k != 0) ? (currSum % k) : currSum;
+            if (modSet.contains(mod)) return true;
+            modSet.add(prevSum);
+            prevSum = mod;
+        }
+
         return false;
     }
 }
