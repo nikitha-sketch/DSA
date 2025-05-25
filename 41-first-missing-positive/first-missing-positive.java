@@ -1,6 +1,6 @@
 class Solution {
     public int firstMissingPositive(int[] nums) {
-        int n=nums.length;
+        /*int n=nums.length;
         for(int i=0;i<n;i++){
             while(nums[i]>0 && nums[i]<=n && nums[nums[i]-1]!=nums[i]){
                 int temp=nums[nums[i]-1];
@@ -13,6 +13,15 @@ class Solution {
                 return i+1;
             }
         }
-        return n+1;
+        return n+1;*/
+
+        Arrays.sort(nums);
+        int smallest=1;
+        for(int num:nums){
+            if(num==smallest){
+                smallest++;
+            }
+        }
+        return smallest;
     }
 }
