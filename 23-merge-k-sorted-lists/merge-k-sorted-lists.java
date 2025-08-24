@@ -10,7 +10,7 @@
  */
 class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
-        if(lists==null || lists.length==0)return null;
+        /*if(lists==null || lists.length==0)return null;
         ListNode head=lists[0];
         for(int i=1;i<lists.length;i++){
             head=mergeTwoSortedLists(head,lists[i]);
@@ -38,6 +38,29 @@ class Solution {
         if(list2!=null){
             temp.next=list2;
         }
+        return dummy.next;*/
+
+        if(lists==null || lists.length==0)return null;
+
+        PriorityQueue<ListNode>pq=new PriorityQueue<>((a,b)->a.val-b.val);
+        for(ListNode list:lists){
+            if(list!=null){
+                pq.offer(list);
+            }
+        }
+
+        ListNode dummy=new ListNode();
+        ListNode curr=dummy;
+
+        while(!pq.isEmpty()){
+            ListNode node=pq.poll();
+            curr.next=node;
+            curr=curr.next;
+            if(node.next!=null){
+                pq.offer(node.next);
+            }
+        }
+
         return dummy.next;
     }
 }
