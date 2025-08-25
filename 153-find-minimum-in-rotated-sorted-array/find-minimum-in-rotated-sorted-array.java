@@ -1,7 +1,7 @@
 import java.util.*;
 class Solution {
     public int findMin(int[] nums) {
-        /*int low=0,high=nums.length-1;
+       /* int low=0,high=nums.length-1;
         int ans=Integer.MAX_VALUE;
         while(low<=high){
             int mid=(low+high)/2;
@@ -15,7 +15,15 @@ class Solution {
             }
         }
         return ans;*/
-        Arrays.sort(nums);
-        return nums[0];
+        /*Arrays.sort(nums);
+        return nums[0];*/
+
+        int min=nums[0];
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]<min){
+                min=nums[i];
+            }
+        }
+        return min;
     }
 }
