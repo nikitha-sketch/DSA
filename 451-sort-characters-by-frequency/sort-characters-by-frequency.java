@@ -29,7 +29,7 @@ class Solution {
                 for(int i = 0; i < entry.getValue(); i++) {
                     sb.append(entry.getKey());
                 }
-                System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+                //System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
             }
         );
 
