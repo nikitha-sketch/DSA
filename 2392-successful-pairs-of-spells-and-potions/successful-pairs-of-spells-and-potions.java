@@ -29,7 +29,8 @@ class Solution {
 
         for(int i=0;i<n;i++){
             long spell=spells[i];
-            long minPotion=(success+spell-1)/spell;
+           // long minPotion=(success+spell-1)/spell;
+            long minPotion=(long) Math.ceil((double) success / spell);
             int idx=lowerBound(potions,minPotion);
             ans[i]=m-idx;
         }
