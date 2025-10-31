@@ -17,7 +17,7 @@ class Solution {
          }
         return arr;
         */
-        List<Integer>list=new ArrayList<>();
+        /*List<Integer>list=new ArrayList<>();
         int n=nums.length;
         for(int i=0;i<n;i++){
             int cnt=1;
@@ -34,6 +34,21 @@ class Solution {
         for(int i=0;i<list.size();i++){
             arr[i]=list.get(i);
         }
-        return arr;
+        return arr;*/
+        int n = nums.length;
+        int[] count = new int[n];
+        int[] res = new int[2];
+        int idx = 0;
+
+        for (int num : nums) {
+            count[num]++;
+            if (count[num] == 2) {
+                res[idx++] = num;
+                if (idx == 2) break;
+            }
+        }
+
+        return res;
+
     }
 }
