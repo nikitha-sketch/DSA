@@ -1,19 +1,14 @@
 class Solution {
     public int[] getSneakyNumbers(int[] nums) {
-        /*int n=nums.length;
-        int arr[]=new int[n];
-        int cnt=0;
-        int i;
-        for(i=1;i<n;i++){
-            if(nums[i]==nums[i-1]){
-                cnt++;
-            }
-        }
-        if(cnt>2){
-            arr[i]=nums[i];
-        }
-        return arr;*/
-        Map<Integer,Integer>map=new HashMap<>();
+         Map<Integer, Long> map = Arrays.stream(nums)
+            .boxed()
+            .collect(Collectors.groupingBy(num -> num, Collectors.counting()));
+
+        return map.entrySet().stream()
+            .filter(entry -> entry.getValue() >= 2)
+            .mapToInt(Map.Entry::getKey)
+            .toArray();
+        /*Map<Integer,Integer>map=new HashMap<>();
         List<Integer>list=new ArrayList<>();
         int n=nums.length;
         for(int num:nums){
@@ -29,6 +24,7 @@ class Solution {
             arr[i]=list.get(i);
          }
         return arr;
+        */
         /*List<Integer>list=new ArrayList<>();
         int n=nums.length;
         int arr[]=new int[n];
@@ -43,5 +39,6 @@ class Solution {
             
         }
         return arr;*/
+        
     }
 }
