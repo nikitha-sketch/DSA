@@ -1,6 +1,6 @@
 class Solution {
     public int findFinalValue(int[] nums, int original) {
-        int n=nums.length;
+       /* int n=nums.length;
         Arrays.sort(nums);
         int value=original;
         for(int num:nums){
@@ -8,6 +8,14 @@ class Solution {
                 value*=2;
             }
         }
-        return value;   
+        return value;   */
+        Set<Integer> set = new HashSet<>();
+        for (int x : nums) set.add(x);
+
+        int value = original;
+        while (set.contains(value)) {
+            value *= 2;
+        }
+        return value;
     }
 }
