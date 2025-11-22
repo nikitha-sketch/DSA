@@ -1,6 +1,6 @@
 class Solution {
     public int minimumOperations(int[] nums) {
-        int n=nums.length;
+        /*int n=nums.length;
         int cnt=0;
         for(int i=0;i<n;i++){
             int add=nums[i]+1;
@@ -8,6 +8,12 @@ class Solution {
             if(add%3==0 || sub%3==0){
                 cnt++;
             }
+        }
+        return cnt;*/
+
+        int cnt=0;
+        for(int num:nums){
+            if(num%3!=0)cnt++;
         }
         return cnt;
     }
