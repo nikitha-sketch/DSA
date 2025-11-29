@@ -6,7 +6,6 @@ class Solution {
             sum+=nums[i];
         }
         int rem=sum%k;
-        if(sum%k==0)return 0;
         return rem;
     }
 }
