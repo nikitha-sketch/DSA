@@ -1,6 +1,6 @@
 class Solution {
     public int maxIceCream(int[] costs, int coins) {
-        int maxcost=0;
+        /*int maxcost=0;
         for(int cost:costs){
             maxcost=Math.max(cost,maxcost);
         }
@@ -15,6 +15,15 @@ class Solution {
             cnt+=canBuy;
             coins-=canBuy*cost;
             if(coins<cost)continue;
+        }
+        return cnt;*/
+
+        int cnt=0;
+        Arrays.sort(costs);
+        for(int val:costs){
+            if(coins<val)break;
+            coins-=val;
+            cnt++;
         }
         return cnt;
     }
