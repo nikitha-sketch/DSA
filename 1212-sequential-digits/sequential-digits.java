@@ -1,20 +1,27 @@
 class Solution {
-    public List<Integer> sequentialDigits(int low, int high) {
-        String chars="123456789";
-        List<Integer>result=new ArrayList<>();
+    static final int[] q = new int[45];
 
-        int lLen=String.valueOf(low).length();
-        int hLen=String.valueOf(high).length();
+    static {
+        int n = 0;
 
-        for(int len=lLen;len<=hLen;len++){
-            for(int j=0;j+len<=chars.length();j++){
-                String sub=chars.substring(j,j+len);
-                int num=Integer.parseInt(sub);
-                if(num>=low && num<=high){
-                    result.add(num);
-                }
-            }
+        for (int i = 1; i < 10; i++)
+            q[n++] = i;
+
+        for (int i = 0; i < n; i++) {
+            int d = q[i] % 10;
+
+            if (d < 9) 
+                q[n++] = q[i] * 10 + d + 1;
         }
-        return result;
+    }
+
+    public List<Integer> sequentialDigits(int low, int high) {
+        List<Integer> res = new ArrayList<>();
+
+        for (int x : q)
+            if (x >= low && x <= high)
+                res.add(x);
+
+        return res;
     }
 }
