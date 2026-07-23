@@ -16,7 +16,7 @@ class Solution {
         if(n<=2){
             return n;
         }
-        int result=32-32 - Integer.numberOfLeadingZeros(n);;
+        int result=32- Integer.numberOfLeadingZeros(n);;
         return 1<<result;
     }
 }
