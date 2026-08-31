@@ -10,32 +10,33 @@
  */
 class Solution {
     public int[] nodesBetweenCriticalPoints(ListNode head) {
-        if(head==null || head.next==null || head.next==null){
-            return new int[]{-1,-1};
-        }
         ListNode prev=head;
-        ListNode cur=head.next; 
-        List<Integer>positions=new ArrayList<>();
-        int index=1;
-        
+        ListNode cur=head.next;
+        int idx=1;
+        int firstCritical=-1;
+        int lastCritical=-1;
+        int minDist=Integer.MAX_VALUE;
         while(cur.next!=null){
-            if((cur.val>prev.val && cur.val>cur.next.val)||(cur.val<prev.val && cur.val<cur.next.val)){
-                positions.add(index);
+            ListNode next=cur.next;
+            boolean isMax=cur.val>prev.val && cur.val>next.val;
+            boolean isMin=cur.val<prev.val && cur.val<next.val;
+            if(isMax || isMin){
+                if(lastCritical==-1){
+                    firstCritical=idx;
+                }
+                else{
+                    minDist=Math.min(minDist,idx-lastCritical);
+                }
+                lastCritical=idx;
             }
             prev=cur;
-            cur=cur.next;
-            index++;
+            cur=next;
+            idx++;
         }
-        if(positions.size()<2){
+        if(firstCritical==-1 || firstCritical==lastCritical){
             return new int[]{-1,-1};
         }
-
-        int minDist=Integer.MAX_VALUE;
-        for(int i=1;i<positions.size();i++){
-            minDist=Math.min(minDist,positions.get(i)-positions.get(i-1));
-        }
-
-        int maxDist=positions.get(positions.size()-1)-positions.get(0);
+        int maxDist=lastCritical-firstCritical;
         return new int[]{minDist,maxDist};
     }
 }
